@@ -34,6 +34,23 @@ public class StdIn {
         return result;
     }
 
+    public static int[] readIntArray(BufferedReader reader, int length) throws IOException {
+        String s;
+        int[] array = null;
+        try {
+            s = reader.readLine();
+            array = s.chars()
+                    .map(x -> x - '0')
+                    .toArray();
+            if (array.length > length) {
+                throw new IOException("слишком длинная последовательность: " + array.length);
+            }
+        } catch (IOException e) {
+            throw e;
+        }
+        return array;
+    }
+
     public static int readInt(BufferedReader reader) {
         int result = 0;
         try {

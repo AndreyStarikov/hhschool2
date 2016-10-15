@@ -75,4 +75,13 @@ public class ArraysUtilsTest {
         System.out.println();
     }
 
+    @Test
+    public void generateArray() throws Exception {
+        int[] a = ArraysUtils.generateArray(3);
+        for (int c : a) {
+            System.out.print(c);
+        }
+        System.out.println();
+    }
+
 }

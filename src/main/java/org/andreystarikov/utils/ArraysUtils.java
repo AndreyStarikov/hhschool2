@@ -23,12 +23,6 @@ public class ArraysUtils {
         return true;
     }
 
-    public static int[] makeSubArray(int[] subString, int rightposition, int length){
-        int[] array = new int[length];
-        System.arraycopy(subString, rightposition - length + 1, array, 0, length);
-        return array;
-    }
-
     public static int[] arrayDecrement(int[] a) {
         int length = a.length;
         if (a[length - 1] == 0) {
@@ -45,7 +39,7 @@ public class ArraysUtils {
             }
             if (a[0] == 0) {
                 int[] result = new int[length - 1];
-                System.arraycopy(a,1,result,0,length - 1);
+                System.arraycopy(a, 1, result, 0, length - 1);
                 return result;
             } else return a;
         } else {
@@ -58,7 +52,7 @@ public class ArraysUtils {
         int overflow = 1;
         int c;
         ArrayList<Integer> list = new ArrayList<>();
-        for (int i = a.length - 1; i >= 0; i--){
+        for (int i = a.length - 1; i >= 0; i--) {
             c = a[i] + overflow;
             if (c == 10) list.add(0);
             else {
@@ -66,11 +60,31 @@ public class ArraysUtils {
                 list.add(c);
             }
         }
-        if (overflow > 0)list.add(overflow);
+        if (overflow > 0) list.add(overflow);
         int[] result = new int[list.size()];
-        for (int i = 0; i < list.size(); i++){
+        for (int i = 0; i < list.size(); i++) {
             result[i] = list.get(list.size() - 1 - i);
         }
         return result;
+    }
+
+    /**
+     * состоит ли массив из одних нулей?
+     */
+    public static boolean isZeroArray(int[] subString) {
+        boolean zeroes = true;
+        for (int c : subString) {
+            if (c != 0) {
+                zeroes = false;
+                break;
+            }
+        }
+        return zeroes;
+    }
+
+    public static int[] generateArray(int length) {
+        int[] array = new int[length];
+        array[0] = 1;
+        return array;
     }
 }
