@@ -23,6 +23,11 @@ public class BigIntegerUtils {
     }
 
     public static BigInteger getResult(int[] subString) {
+//        for(int out:subString){
+//            System.out.print(out);
+//        }
+//        System.out.println(" - ответ");
+
         int signum = subString.length; //количество разрядов
         if (signum == 1) return BigInteger.valueOf(subString[0]);
 

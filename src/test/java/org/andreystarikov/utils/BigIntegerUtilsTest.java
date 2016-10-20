@@ -30,9 +30,10 @@ public class BigIntegerUtilsTest {
 //        BigInteger b = BigIntegerUtils.getResult(1, 4, a);
 //        System.out.println(b);
 //    }
+//
 //    @Test
 //    public void g(){
-//        int[] i = new int[]{9, 1, 9, 9};
+//        int[] i = new int[]{2,0,0};
 //        System.out.println(BigIntegerUtils.getResult(i));
 //    }
 

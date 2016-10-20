@@ -1,6 +1,5 @@
 package org.andreystarikov.infinitesequence;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -20,10 +19,17 @@ public class SequenceTest {
     private int[] array;
     private BigInteger expected;
 
-    public SequenceTest(int[] array, long exp){
+    public SequenceTest(int[] array, long exp) {
         this.array = array;
         expected = BigInteger.valueOf(exp);
     }
+
+//    @Test
+//    public void testFindSequence1() {
+//        System.out.println("А вот и число!!!");
+//        int[] i = new int[]{0,0,3,0,0};
+//        System.out.println(Sequence.findSequence(i));
+//    }
 
     @Test
     public void testFindSequence() {
@@ -40,6 +46,8 @@ public class SequenceTest {
                 {new int[]{9, 1, 9, 9, 1, 9}, 84886},
                 {new int[]{9, 9, 9, 9, 9}, 438886},
                 {new int[]{2, 1, 1, 3, 1, 1}, 228},
+                {new int[]{1, 1, 1, 1, 1}, 223},
+                {new int[]{0, 2, 0}, 492},
                 {new int[]{2, 1, 3, 1}, 15}
         });
     }

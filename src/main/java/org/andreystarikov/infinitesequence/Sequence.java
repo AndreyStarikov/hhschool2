@@ -96,43 +96,47 @@ public class Sequence {
                 }//конец while
                 //если самым левым является старший разряд текущего
                 if (j - step == -1) {
-                    boolean findRight = true;
-                    int[] currentArray = Arrays.copyOf(subString, j + 1);
-                    currentArray = ArraysUtils.arrayIncrement(currentArray);
-                    for (int k = 0; k < length - 1 - j; k++) {
-                        if (currentArray[k] != subString[j + k + 1]) {
-                            findRight = false;
-                            break;
+                    if (subString[0] != 0) {
+                        boolean findRight = true;
+                        int[] currentArray = Arrays.copyOf(subString, j + 1);
+                        currentArray = ArraysUtils.arrayIncrement(currentArray);
+                        for (int k = 0; k < length - 1 - j; k++) {
+                            if (currentArray[k] != subString[j + k + 1]) {
+                                findRight = false;
+                                break;
+                            }
                         }
-                    }
-                    //если сравнение прошло успешно, то нашли элемент
-                    if (findRight) {
-                        position = BigIntegerUtils.getResult(j, subString);
-                        options.add(position);
+                        //если сравнение прошло успешно, то нашли элемент
+                        if (findRight) {
+                            position = BigIntegerUtils.getResult(j, subString);
+                            options.add(position);
+                        }
                     }
                 }
                 if (j - step < -1) {
-                    int[] leftArray = Arrays.copyOf(subString, j + 1);
-                    leftArray = ArraysUtils.arrayIncrement(leftArray);
-                    int[] rightArray = new int[step];
-                    System.arraycopy(subString, j + 1, rightArray, 0, length - 1 - j);
-                    //дополнение правого массива числами из левого
-                    for (int k = 1; k <= step + 1 + j - length; k++) {
-                        rightArray[step - k] = leftArray[leftArray.length - k];
-                    }
-                    //сравнение правой части правого массива и стем что есть в левом
-                    boolean findRight = true;
-                    for (int k = 0; k <= j; k++) {
-                        if (leftArray[leftArray.length - 1 - k] != rightArray[rightArray.length - 1 - k]) {
-                            findRight = false;
-                            break;
+                    if (subString[j + 1] != 0) {
+                        int[] leftArray = Arrays.copyOf(subString, j + 1);
+                        leftArray = ArraysUtils.arrayIncrement(leftArray);
+                        int[] rightArray = new int[step];
+                        System.arraycopy(subString, j + 1, rightArray, 0, length - 1 - j);
+                        //дополнение правого массива числами из левого
+                        for (int k = 1; k <= step + 1 + j - length; k++) {
+                            rightArray[step - k] = leftArray[leftArray.length - k];
                         }
-                    }
-                    //если сравнение прошло успешно, то нашли элемент
-                    if (findRight) {
-                        position = BigIntegerUtils.getResult(rightArray);
-                        position = position.subtract(BigInteger.valueOf(j + 1));
-                        options.add(position);
+                        //сравнение правой части правого массива и стем что есть в левом
+                        boolean findRight = true;
+                        for (int k = 0; k <= j; k++) {
+                            if (leftArray[leftArray.length - 1 - k] != rightArray[rightArray.length - 1 - k]) {
+                                findRight = false;
+                                break;
+                            }
+                        }
+                        //если сравнение прошло успешно, то нашли элемент
+                        if (findRight) {
+                            position = BigIntegerUtils.getResult(rightArray);
+                            position = position.subtract(BigInteger.valueOf(j + 1));
+                            options.add(position);
+                        }
                     }
                 }
 
